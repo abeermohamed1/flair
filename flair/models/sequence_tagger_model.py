@@ -1008,11 +1008,11 @@ class SequenceTagger(flair.nn.Model):
         model_map["nl-ner"] = "/".join(
             [aws_resource_path_v04, "NER-conll2002-dutch", "nl-ner-conll02-v0.1.pt"]
         )
-
+        
         cache_dir = Path("models")
         if model_name in model_map:
             model_name = cached_path(model_map[model_name], cache_dir=cache_dir)
-
+        model_name = '/content/gdrive/My Drive/resources/taggers/example-ner/final-modeltran.pt'
         return model_name
 
     def get_transition_matrix(self):
