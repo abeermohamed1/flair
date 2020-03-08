@@ -2206,7 +2206,7 @@ class BertEmbeddings(TokenEmbeddings):
 
         if "distilbert" in bert_model_or_path:
             try:
-                from transformers import DistilBertTokenizer, DistilBertModel
+                from transformers import DistilBertTokenizer, DistilBertModel, TFBertModel
             except ImportError:
                 log.warning("-" * 100)
                 log.warning(
@@ -2228,7 +2228,7 @@ class BertEmbeddings(TokenEmbeddings):
             )
         else:
             self.tokenizer = BertTokenizer.from_pretrained(bert_model_or_path)
-            self.model = BertModel.from_pretrained(
+            self.model = TFBertModel.from_pretrained(
                 pretrained_model_name_or_path=bert_model_or_path,
                 output_hidden_states=True,
             )
